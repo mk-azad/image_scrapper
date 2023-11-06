@@ -1,18 +1,71 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
 <title>Search Page</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #f1f1f1; /* Background color for the entire content area */
+    }
+
+    h1 {
+        text-align: center;
+        background: linear-gradient(135deg, #f06, #fc6, #f06);
+        background-size: 200% 200%;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: glow 5s linear infinite;
+    }
+
+    @keyframes glow {
+        0% {
+            background-position: 0% 100%;
+        }
+
+        100% {
+            background-position: 100% 0;
+        }
+    }
+
+    .search-box {
+        background: #3498db; /* Background color for the search box container */
+        padding: 20px; /* Add some padding for spacing */
+        border-radius: 15px; /* Add rounded corners */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+        text-align: center;
+    }
+
+    input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: none; /* Remove the input border */
+        border-radius: 15px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #e74c3c; /* Change the button's background color */
+        color: white;
+        border: 2px solid #c0392b; /* Add a solid border with a different color */
+        cursor: pointer;
+        border-radius: 15px;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Search</h1>
+    <h1>Search</h1>
 
-    <div class="form">
+    <div class="search-box">
         <form action="/review" method="POST">
-            <input type="text" name="content" id="content">
+            <input type="text" name="content" id="content" placeholder="Enter your search term">
             <input type="submit" value="Search">
         </form>
     </div>
